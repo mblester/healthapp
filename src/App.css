@@ -1,38 +1,174 @@
+.header {
+  background-color: #7eadea;
+  height: 80px;
+  padding: 10px;
+  font-size: 17px;
+  width: 100%;
+}
+.header h1 {
+  text-align: left;
+  margin-bottom: 0px;
+  margin-left: 30px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.header h4 {
+  text-align: left;
+  margin-top: 0px;
+  margin-left: 30px;
+  margin-right: 30px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+a {
+  text-decoration: none;
+  color: black;
+  display: flex;
+  justify-content: center;
+}
+a:hover {
+  color: white;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #5c5c5c;
+  /* background-image: url('background.png'); */
+}
+
+body::after {
+  content: "";
+  background-image: url("background.png");
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  opacity: 0.3;
+}
+
+.homeButtons {
+  margin: 100px;
+  padding: 100px;
+  display: flex;
+  justify-content: space-between;
+  height: 50px;
+}
+
+.homeButtons button {
+  width: 120px;
+  background-color: gainsboro;
+}
+
+.calendarStyle {
+  justify-content: center;
+  display: flex;
+  margin-bottom: -80px;
+  margin-top: 80px;
+  border: black 40px;
+}
+
+.nav-list {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  justify-content: right;
+  width: 85%;
+  margin-bottom: -50px;
+}
+
+.nav-list-item {
+  margin-right: 30px;
+  font-weight: 600;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+.nav-list-item2 {
+  font-weight: 600;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  margin-right: 30px;
+}
+
+.nav-list-item3 {
+  font-weight: 600;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
 .App {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.login-button {
+  margin-left: 100px;
+  margin-top: 50px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.login-form {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  margin: 50px auto;
+  width: 50%;
+  gap: 15px;
+}
+
+.add-form {
+  display: flex;
+  flex-direction: column;
+  margin: 50px auto;
+  padding: 30px;
+  width: 50%;
+  gap: 15px;
+  background-color: white;
+}
+
+.submit-button {
+  align-self: center;
+}
+.date {
+  background-color: white 0.3;
+  padding-bottom: 20px;
+}
+
+.login-fill {
+  background-color: white;
+  border: 2px solid grey;
+  border-radius: 5px;
+}
+
+.nav-list-item:hover {
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.table {
+  width: 80%;
+  display: flex;
+  margin: auto;
+  margin-top: 30px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+.tableHeader {
+  font-size: larger;
+  font-weight: 600;
+}
+
+.add-button {
+  margin-top: 30px;
+  margin-left: 180px;
+  height: 40px;
+  width: 150px;
+  background-color: lightgray;
+  font-weight: 500;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+@media (max-width: 900px) {
+  .SearchInput::placeholder {
+    color: transparent;
   }
 }
