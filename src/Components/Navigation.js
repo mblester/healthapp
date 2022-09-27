@@ -1,9 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import cookie from "cookie";
+import { useEffect } from "react";
 
 const Navigation = (props) => {
   const { loggedInBool, setLoggedInBool } = props;
+  useEffect(() => {
+    console.log("this is logged in", props.loggedInBool);
+  });
   return (
     <ul className="nav-list">
       <li className="nav-list-item">
@@ -15,7 +19,7 @@ const Navigation = (props) => {
       {loggedInBool ? (
         <li className="nav-list-item">
           <Link
-            style={{ color: "white" }}
+            style={{ color: "black" }}
             to="/login"
             onClick={() => {
               document.cookie = cookie.serialize("loggedIn", null, {

@@ -1,18 +1,20 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { TextField, Button, Container } from "@mui/material";
+import cookie from "cookie";
 
-const Login = () => {
+const Login = (props) => {
   const navigate = useNavigate();
+  const { setUser, setLoggedInBool } = props;
 
-  const [state, setState] = useState({
-    username: "",
+  const [userState, setUserState] = useState({
+    userName: "",
     password: "",
   });
 
   const handleTextChange = (e) => {
     const { name, value } = e.target;
-    setState((prevState) => {
+    setUserState((prevState) => {
       return {
         ...prevState,
         [name]: value,
@@ -22,10 +24,20 @@ const Login = () => {
 
   const login = (e) => {
     e.preventDefault();
-    // set cookie here
-    document.cookie = "loggedIn=true;max-age=60";
+    // set cookie here loggedIn=true;max-age=60*1000
+    //if we use the cookie module maxAge- the set time is in seconds, not milliseconds
+    document.cookie = cookie.serialize("loggedIn", "true", { maxAge: 7200 });
+    document.cookie = cookie.serialize("userName", userState.userName, {
+      maxAge: 7200,
+    });
     // set loggedIn = true and max-age = 60*1000 (one minute)
 
+    let newUser = {
+      userName: userState.userName,
+      email: "newemail.mail",
+    };
+    setUser(newUser);
+    setLoggedInBool(true);
     navigate("/");
   };
 
@@ -36,7 +48,7 @@ const Login = () => {
           <TextField
             required
             onChange={handleTextChange}
-            value={state.username}
+            value={userState.username}
             name="username"
             label="Username"
             type="text"
@@ -46,7 +58,7 @@ const Login = () => {
           <TextField
             required
             onChange={handleTextChange}
-            value={state.password}
+            value={userState.password}
             name="password"
             label="Password"
             type="password"

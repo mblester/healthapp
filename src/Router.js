@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 import Home from "./Components/Home";
 import About from "./Components/About";
-import Login from "./Components/Login";
+import Login from "./Containers/Login";
 import UpcomingAppointments from "./Containers/UpcomingAppointments";
 import Table from "./Containers/Table";
 import cookie from "cookie";
@@ -41,7 +41,6 @@ export default function Router() {
         path="/addAppointment"
         element={<ProtectedRoute component={AddAppointment} />}
       />
-
     </Routes>
   );
 }

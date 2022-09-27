@@ -1,4 +1,8 @@
 const state = {
+  user: {
+    username: "test-user-1",
+    email: "test-user@example.com",
+  },
   appointments: [
     {
       date: "11/19/2022",
