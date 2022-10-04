@@ -1,5 +1,5 @@
 import React from "react";
-import CustomTable from "./Table";
+import Table from "../Containers/Table";
 import { Link } from "react-router-dom";
 
 export default function UpcomingAppointments() {
@@ -8,7 +8,7 @@ export default function UpcomingAppointments() {
       <button className="add-button">
         <Link to={"/addAppointment"}>Add Appointment</Link>
       </button>
-      <CustomTable />
+      <Table />
     </div>
   );
 }

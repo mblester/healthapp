@@ -7,11 +7,11 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 //import { useState } from "react";
-import state from "../redux/state";
+//import state from "../redux/state";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { removeAppointment } from "../redux/actions";
+//import { removeAppointment } from "../redux/actions";
 
-export default function CustomTable(props) {
+export default function table(props) {
   console.log("this is props", props);
   // const [appointments, setAppointments] = useState([
   //   {
@@ -66,11 +66,8 @@ export default function CustomTable(props) {
   //   },
   // ]);
 
-  console.log("this is state", state);
+  console.log("this is state", props.state);
   return (
-    // <div className="add-button">
-    //   <button>ADD APPOINTMENT</button>
-    // </div>
     <div className="table">
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -83,7 +80,7 @@ export default function CustomTable(props) {
             </TableRow>
           </TableHead>
           <TableBody>
-            {state.appointments.map((row, idx) => (
+            {props.appointments.map((row, idx) => (
               <TableRow
                 key={row.Date}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
@@ -93,7 +90,7 @@ export default function CustomTable(props) {
                 <TableCell align="right">{row.last_name}</TableCell>
                 <TableCell align="right">
                   <DeleteIcon
-                    onClick={() => removeAppointment(idx)}
+                    onClick={() => props.removeAppointment(idx)}
                     sx={{ cursor: "pointer" }}
                   ></DeleteIcon>
                 </TableCell>
