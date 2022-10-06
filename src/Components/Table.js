@@ -1,4 +1,4 @@
-import * as React from "react";
+import { useState, useEffect } from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -11,62 +11,22 @@ import Paper from "@mui/material/Paper";
 import DeleteIcon from "@mui/icons-material/Delete";
 //import { removeAppointment } from "../redux/actions";
 
-export default function table(props) {
-  console.log("this is props", props);
-  // const [appointments, setAppointments] = useState([
-  //   {
-  //     date: "11/08/2022",
-  //     id: "4:41 PM",
-  //     last_name: "Drews",
-  //   },
-  //   {
-  //     date: "12/03/2022",
-  //     id: "12:57 PM",
-  //     last_name: "De Giovanni",
-  //   },
-  //   {
-  //     date: "11/15/2022",
-  //     id: "1:54 PM",
-  //     last_name: "Knappe",
-  //   },
-  //   {
-  //     date: "12/18/2022",
-  //     id: "12:29 PM",
-  //     last_name: "Ambroziak",
-  //   },
-  //   {
-  //     date: "11/02/2022",
-  //     id: "9:46 AM",
-  //     last_name: "Taffie",
-  //   },
-  //   {
-  //     date: "12/25/2022",
-  //     id: "11:39 AM",
-  //     last_name: "Somerville",
-  //   },
-  //   {
-  //     date: "12/23/2022",
-  //     id: "4:13 PM",
-  //     last_name: "Gooble",
-  //   },
-  //   {
-  //     date: "11/03/2022",
-  //     id: "9:21 AM",
-  //     last_name: "Greenwood",
-  //   },
-  //   {
-  //     date: "11/30/2022",
-  //     id: "11:43 AM",
-  //     last_name: "Loughney",
-  //   },
-  //   {
-  //     date: "11/05/2022",
-  //     id: "4:02 PM",
-  //     last_name: "Bloodworthe",
-  //   },
-  // ]);
+export default function CustomTable(props) {
+ const [appointments, setAppointments] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await fetch(
+        "https://capstone-backend-jet.vercel.app/api/appointments"
+      );
+      const json = await data.json();
+      setAppointments(json);
+    };
+    fetchData();
+  }, []);
 
-  console.log("this is state", props.state);
+  useEffect(() => {
+    console.log(appointments);
+  }, [appointments]);
   return (
     <div className="table">
       <TableContainer component={Paper}>
