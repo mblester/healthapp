@@ -1,14 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button, TextField, Container } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const AddAppointment = (props) => {
   const { addAppointment, appointments } = props;
   console.log("this is appointment props", props);
   const [appointmentInfo, setAppointmentInfo] = useState({
-    date: "",
-    time: "",
-    last_name: "",
+    appointment_date: "",
+    appointment_time: "",
+    LastName: "",
   });
 
   const navigate = useNavigate();
@@ -35,6 +36,23 @@ const AddAppointment = (props) => {
     addAppointment(listObj);
     navigate("/UpcomingAppointments");
   };
+  useEffect(() => {
+    console.log("this is add appointments", appointments);
+    axios({
+      method: 'PUT',
+      url:  `https://capstone-backend-jet.vercel.app/api/appointments/${appointments.id}`,
+      data: {
+        appointment_date: appointments.date,
+        appointment_time: appointments.time,
+        LastName: appointments.last_name,
+      }
+      })
+      .then((res)=> {
+        //retrieve titles again so this title
+        //displays on the list
+     console.log("this is res", res)
+      })
+  }, [appointments]);
 
   return (
     <>

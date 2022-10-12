@@ -12,7 +12,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 //import { removeAppointment } from "../redux/actions";
 
 export default function CustomTable(props) {
- const [appointments, setAppointments] = useState([]);
+  const [appointments, setAppointments] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
       const data = await fetch(
@@ -25,7 +25,7 @@ export default function CustomTable(props) {
   }, []);
 
   useEffect(() => {
-    console.log(appointments);
+    console.log("this is table appointments", appointments);
   }, [appointments]);
   return (
     <div className="table">
@@ -40,14 +40,14 @@ export default function CustomTable(props) {
             </TableRow>
           </TableHead>
           <TableBody>
-            {props.appointments.map((row, idx) => (
+            {appointments.map((row, idx) => (
               <TableRow
                 key={row.Date}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
-                <TableCell align="right">{row.date}</TableCell>
-                <TableCell align="right">{row.time}</TableCell>
-                <TableCell align="right">{row.last_name}</TableCell>
+                <TableCell align="right">{row.appointment_date}</TableCell>
+                <TableCell align="right">{row.appointment_time}</TableCell>
+                <TableCell align="right">{row.LastName}</TableCell>
                 <TableCell align="right">
                   <DeleteIcon
                     onClick={() => props.removeAppointment(idx)}
